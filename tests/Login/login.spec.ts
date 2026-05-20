@@ -9,7 +9,7 @@ const test_credentials = {
 };
 
 
-const _url = 'https://www.emobility-stage.me-solshare.net/';
+const _url = 'https://www.emobility-stage.me-solshare.net/auth/login';
 
 //TTest Suite
 
@@ -33,7 +33,7 @@ test.describe('Login Flow - emobility', ()=>{
 
         //url check
 
-        await expect(page).toHaveURL('https://www.emobility-stage.me-solshare.net');
+        await expect(page).toHaveURL('https://www.emobility-stage.me-solshare.net/auth/login');
 
         console.log('Page loaded successfully');
     })
@@ -46,15 +46,22 @@ test.describe('Login Flow - emobility', ()=>{
 
       //Valid Email Fill
       await page.locator('input[name="username"]').fill(test_credentials._email);
+      await page.waitForLoadState('networkidle', {timeout: 10000});
 
 
       //Valid Password Fill
 
-      await await page.locator('[name="password"]').fill(test_credentials._password);
-
+      await page.locator('[name="password"]').fill(test_credentials._password);
+      await page.waitForLoadState('networkidle', {timeout: 10000});
 
       // Login button click
 
+      await await page.locator("button[type='submit']").click();
+
+      //await page.waitForTimeout(60000);
+      await page.waitForLoadState('domcontentloaded');
+
+      console.log('login successfully');
 
   })
 

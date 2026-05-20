@@ -35,7 +35,10 @@ export default defineConfig({
   use: {
 
     headless: false,
-    viewport: { width : 1920, height: 1080},
+    viewport: null,
+    launchOptions: {
+      args: ['--start-maximized']
+    },
     screenshot: "on",
     video: "on",
     trace: "on",
@@ -47,8 +50,10 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'],
+      channel: 'chrome'},
+
     },
 
 
