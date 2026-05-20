@@ -1,5 +1,5 @@
 import {Page, expect} from '@playwright/test';
-import{urls, _pageTitle} from "../testData/helper.data.";
+import{urls, _pageTitle} from "../testData/credentials.data.";
 
 export class LoginPage {
 
