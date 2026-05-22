@@ -13,4 +13,34 @@ test.describe('Login Flow - emobility', ()=>{
         loginPage = new LoginPage(page);
         await loginPage.navigationTo();
     })
-})
+
+    //TC_001 Page load check
+    test('TC_001 - Login Page Should Load Successfully', async () => {
+
+        await loginPage.verifyPageLoaded();
+    })
+
+    //TC_002 Valid Login
+    test('TC_002 - User Should Login with Valid Credentials', async () => {
+        await loginPage.login(
+            test_credentials._email,
+            test_credentials._password
+        );
+
+        await loginPage.verifyLoginSucess();
+
+        console.log('TC_002 Passed- Login Successfully');
+    })
+
+    //TC_003 Invalid Login
+
+    test('TC_003 - Login with Invalid Credentials', async () => {
+        await loginPage.login(
+            test_credentials._wrongEmail,
+            test_credentials._wrongPassword
+        );
+        await loginPage.verifyLoginFailed();
+
+        console.log('TC_003- Failed - Login failed');
+    })
+});
