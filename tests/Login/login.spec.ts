@@ -43,4 +43,31 @@ test.describe('Login Flow - emobility', ()=>{
 
         console.log('TC_003- Failed - Login failed');
     })
+
+    //TC_004 Invalid email
+
+    test('TC_004 - Login with Invalid Email', async () => {
+        await loginPage.login(
+            test_credentials._wrongEmail,
+            test_credentials._password
+        );
+        await loginPage.verifyLoginFailed();
+        console.log('TC_004- Failed - Login failed with wrong email');
+    })
+
+    //TC_005 Invalid Password
+
+    test('TC_005 - Login with Invalid Password', async () => {
+
+        await loginPage.login(
+            test_credentials._email,
+            test_credentials._wrongPassword
+        );
+
+        await loginPage.verifyLoginFailed();
+
+        console.log('TC_005 - Failed - Login failed with wrong password');
+
+    })
+
 });
