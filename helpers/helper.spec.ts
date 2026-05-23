@@ -1,16 +1,22 @@
 import {Page} from "@playwright/test";
 
-//Random wait helper
+export class Helper {
 
-export async function _waitForPageReady(page:Page, timeout:60000) {
+    private page: Page;
 
-    await page.waitForLoadState('networkidle', {timeout: timeout});
+    constructor(page: Page) {
+        this.page = page;
+    }
 
-}
+    //Random wait helper
+    async waitForPageReady(page: Page, timeout: number = 60000) {
+        await this.page.waitForLoadState('networkidle', {timeout: timeout});
+    }
 
-//Clear & Fill input
+    //Clear & Fill input
+    async clearAndFill(selector: string, value: string) {
+        await this.page.locator(selector).clear();
+        await this.page.locator(selector).fill(value);
+    }
 
-export async function _clearAndFill(page:Page, selcetor: string, value: string) {
-    await page.locator(selcetor).clear();
-    await page.locator(selcetor).fill(value);
 }

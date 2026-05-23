@@ -1,23 +1,28 @@
 import {test} from '@playwright/test';
 import {LoginPage} from "../../pages/loginpage.spec";
 import {test_credentials} from "../../testData/credentials.data.";
-
+import {Helper} from "../../helpers/helper.spec";
 
 //Test Suite
 
 test.describe('Login Flow - emobility', ()=>{
     let loginPage: LoginPage;
+    let helper: Helper;
+
 
     //Before each - navigate to login page
 
     test.beforeEach(async ({page})=>{
         loginPage = new LoginPage(page);
+        helper = new Helper(page);
         await loginPage.navigationTo();
 
     })
 
     //TC_001 Page load check
-    test('TC_001 - Login Page Should Load Successfully', async () => {
+    test('TC_001 - Login Page Should Load Successfully', async ({page}) => {
+    
+        await helper.waitForPageReady(page, 60000);
 
         await loginPage.verifyPageLoaded();
     })
