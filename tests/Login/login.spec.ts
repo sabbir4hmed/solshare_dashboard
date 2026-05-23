@@ -2,6 +2,7 @@ import {test} from '@playwright/test';
 import {LoginPage} from "../../pages/loginpage.spec";
 import {test_credentials} from "../../testData/credentials.data.";
 
+
 //Test Suite
 
 test.describe('Login Flow - emobility', ()=>{
@@ -12,6 +13,7 @@ test.describe('Login Flow - emobility', ()=>{
     test.beforeEach(async ({page})=>{
         loginPage = new LoginPage(page);
         await loginPage.navigationTo();
+
     })
 
     //TC_001 Page load check
