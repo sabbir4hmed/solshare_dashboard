@@ -10,6 +10,8 @@ export class LoginPage {
     private _emailfield = 'input[name="username"]';
     private _passwordfield = 'input[name="password"]';
     private _submitbutton = "button[type='submit']";
+    private _privacybutton = "Privacy Policy";
+    
 
     constructor(page:Page) {
         this.page = page;
