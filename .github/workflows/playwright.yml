@@ -37,7 +37,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-deploy:
+  deploy:
 
     name: Deploy CD
     needs: test
