@@ -2,12 +2,13 @@ import {test} from '@playwright/test';
 import {LoginPage} from "../../pages/loginpage.spec";
 import {test_credentials} from "../../testData/credentials.data.";
 import {Helper} from "../../helpers/helper.spec";
-
+import {PrivacyModal} from "../../pages/privacymodal.spec";
 //Test Suite
 
 test.describe('Login Flow - emobility', ()=>{
     let loginPage: LoginPage;
     let helper: Helper;
+    let privacyModal : PrivacyModal;
 
 
     //Before each - navigate to login page
@@ -15,6 +16,7 @@ test.describe('Login Flow - emobility', ()=>{
     test.beforeEach(async ({page})=>{
         loginPage = new LoginPage(page);
         helper = new Helper(page);
+        privacyModal = new PrivacyModal(page);
         await loginPage.navigationTo();
 
     })
@@ -77,4 +79,22 @@ test.describe('Login Flow - emobility', ()=>{
 
     })
 
+
+    //TC_006 Privacy Modal Check
+
+    test('TC_006 - Verify Privacy Modal on Login Page', async ({page}) => {
+
+        await privacyModal.verifyPrivacyButtonVisible();
+
+        await helper.waitForPageReady(page, 60000);
+
+        //await privacyModal.verifyPrivacyModalVisible();
+
+        await helper.waitForPageReady(page, 60000);
+
+        await privacyModal.verifyPrivacyModalClosed();
+
+        console.log('TC_006 - Passed - Privacy Modal Verified');
+    })
+        
 });

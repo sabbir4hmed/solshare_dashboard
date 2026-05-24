@@ -1,0 +1,155 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login\login.spec.ts >> Login Flow - emobility >> TC_006 - Verify Privacy Modal on Login Page
+- Location: tests\Login\login.spec.ts:85:9
+
+# Error details
+
+```
+TypeError: privacyModal.verifyPrivacyModalVisible is not a function
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link "Logo" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e8]
+      - generic [ref=e9]:
+        - heading "Welcome to SOLshare!" [level=3] [ref=e10]
+        - paragraph [ref=e11]:
+          - text: Create a network. Share electricity.
+          - text: Brighten the future
+      - generic [ref=e12]:
+        - generic [ref=e13]: © 2026 ME-SOLshare
+        - generic [ref=e15] [cursor=pointer]: Privacy Policy
+    - generic [ref=e20]:
+      - heading "Emobility dashboard" [level=3] [ref=e21]
+      - generic [ref=e23]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: 
+          - textbox "Phone number or email" [ref=e28]
+        - generic [ref=e31]:
+          - generic [ref=e32]: 
+          - textbox "Password" [ref=e33]
+          - generic [ref=e35] [cursor=pointer]: 
+        - generic [ref=e36]:
+          - button "Sign In With SOLshare" [ref=e38] [cursor=pointer]
+          - button "Sign In" [ref=e40] [cursor=pointer]
+  - img
+```
+
+# Test source
+
+```ts
+  1   | import {test} from '@playwright/test';
+  2   | import {LoginPage} from "../../pages/loginpage.spec";
+  3   | import {test_credentials} from "../../testData/credentials.data.";
+  4   | import {Helper} from "../../helpers/helper.spec";
+  5   | import {PrivacyModal} from "../../pages/privacymodal.spec";
+  6   | //Test Suite
+  7   | 
+  8   | test.describe('Login Flow - emobility', ()=>{
+  9   |     let loginPage: LoginPage;
+  10  |     let helper: Helper;
+  11  |     let privacyModal : PrivacyModal;
+  12  | 
+  13  | 
+  14  |     //Before each - navigate to login page
+  15  | 
+  16  |     test.beforeEach(async ({page})=>{
+  17  |         loginPage = new LoginPage(page);
+  18  |         helper = new Helper(page);
+  19  |         privacyModal = new PrivacyModal(page);
+  20  |         await loginPage.navigationTo();
+  21  | 
+  22  |     })
+  23  | 
+  24  |     //TC_001 Page load check
+  25  |     test('TC_001 - Login Page Should Load Successfully', async ({page}) => {
+  26  |     
+  27  |         await helper.waitForPageReady(page, 60000);
+  28  | 
+  29  |         await loginPage.verifyPageLoaded();
+  30  |     })
+  31  | 
+  32  |     //TC_002 Valid Login
+  33  |     test('TC_002 - User Should Login with Valid Credentials', async () => {
+  34  |         await loginPage.login(
+  35  |             test_credentials._email,
+  36  |             test_credentials._password
+  37  |         );
+  38  | 
+  39  |         await loginPage.verifyLoginSucess();
+  40  | 
+  41  |         console.log('TC_002 Passed- Login Successfully');
+  42  |     })
+  43  | 
+  44  |     //TC_003 Invalid Login
+  45  | 
+  46  |     test('TC_003 - Login with Invalid Credentials', async () => {
+  47  |         await loginPage.login(
+  48  |             test_credentials._wrongEmail,
+  49  |             test_credentials._wrongPassword
+  50  |         );
+  51  |         await loginPage.verifyLoginFailed();
+  52  | 
+  53  |         console.log('TC_003- Failed - Login failed');
+  54  |     })
+  55  | 
+  56  |     //TC_004 Invalid email
+  57  | 
+  58  |     test('TC_004 - Login with Invalid Email', async () => {
+  59  |         await loginPage.login(
+  60  |             test_credentials._wrongEmail,
+  61  |             test_credentials._password
+  62  |         );
+  63  |         await loginPage.verifyLoginFailed();
+  64  |         console.log('TC_004- Failed - Login failed with wrong email');
+  65  |     })
+  66  | 
+  67  |     //TC_005 Invalid Password
+  68  | 
+  69  |     test('TC_005 - Login with Invalid Password', async () => {
+  70  | 
+  71  |         await loginPage.login(
+  72  |             test_credentials._email,
+  73  |             test_credentials._wrongPassword
+  74  |         );
+  75  | 
+  76  |         await loginPage.verifyLoginFailed();
+  77  | 
+  78  |         console.log('TC_005 - Failed - Login failed with wrong password');
+  79  | 
+  80  |     })
+  81  | 
+  82  | 
+  83  |     //TC_006 Privacy Modal Check
+  84  | 
+  85  |     test('TC_006 - Verify Privacy Modal on Login Page', async ({page}) => {
+  86  | 
+  87  |         await privacyModal.verifyPrivacyButtonVisible();
+  88  | 
+  89  |         await helper.waitForPageReady(page, 60000);
+  90  | 
+> 91  |         await privacyModal.verifyPrivacyModalVisible();
+      |                            ^ TypeError: privacyModal.verifyPrivacyModalVisible is not a function
+  92  | 
+  93  |         await helper.waitForPageReady(page, 60000);
+  94  | 
+  95  |         await privacyModal.verifyPrivacyModalClosed();
+  96  | 
+  97  |         console.log('TC_006 - Passed - Privacy Modal Verified');
+  98  |     })
+  99  |         
+  100 | });
+```
