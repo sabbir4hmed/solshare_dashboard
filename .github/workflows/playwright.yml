@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright Tests CI-CD Pilpeline
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -35,3 +36,22 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+deploy:
+
+    name: Deploy CD
+    needs: test
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Deploy to Server
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
