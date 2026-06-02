@@ -1,6 +1,6 @@
 
 import { Page, expect } from '@playwright/test';
-import { urls } from "../testData/credentials.data.";
+import { urls } from "../testData/credentials.data";
 
 
 export class DashboardPage {
@@ -11,7 +11,7 @@ export class DashboardPage {
 
     // Locator 
 
-    private _navbutton = "//button[@id='kt_aside_toggle']";
+    private _overview = 'Overview';
 
 
 
@@ -30,9 +30,20 @@ export class DashboardPage {
         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
     }
 
-    async toggleNavigation() {
-        await this.page.click(this._navbutton);
-        await this.page.waitForLoadState
+    async overview() {
+        await this.page.getByText(this._overview).click();
+        await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+    }
+
+
+
+    //Assertions
+
+    async verifyDashboardLoaded() {
+        await expect(this.page).toHaveURL(urls._baseUrl + urls._dashboardPage);
+
+        console.log('Dashboard Loaded Successfully');
+
     }
 
 

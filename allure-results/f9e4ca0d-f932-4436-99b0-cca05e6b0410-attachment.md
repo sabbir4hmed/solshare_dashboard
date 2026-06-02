@@ -1,0 +1,103 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Dashboard\dashboard.spec.ts >> Dashboard Flow - emobility >> TC_007 - Dashboard Should Load Successfully
+- Location: tests\Dashboard\dashboard.spec.ts:24:9
+
+# Error details
+
+```
+TimeoutError: locator.fill: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('input[name="username"]')
+
+```
+
+# Test source
+
+```ts
+  1  | import {Page, expect} from '@playwright/test';
+  2  | import{urls, _pageTitle} from "../testData/credentials.data";
+  3  | 
+  4  | export class LoginPage {
+  5  | 
+  6  |     private page : Page;
+  7  | 
+  8  |     //Locators
+  9  | 
+  10 |     private _emailfield = 'input[name="username"]';
+  11 |     private _passwordfield = 'input[name="password"]';
+  12 |     private _submitbutton = "button[type='submit']";
+  13 |     
+  14 | 
+  15 |     constructor(page:Page) {
+  16 |         this.page = page;
+  17 |     }
+  18 | 
+  19 |     //Action
+  20 | 
+  21 |     async navigationTo()
+  22 |     {
+  23 |         await this.page.goto(urls._baseUrl + urls._loginPage);
+  24 |         await this.page.waitForLoadState('domcontentloaded');
+  25 |     }
+  26 | 
+  27 |     //Fill Mail
+  28 | 
+  29 |     async fillmail(email: string)
+  30 |     {
+> 31 |         await this.page.locator(this._emailfield).fill(email);
+     |                                                   ^ TimeoutError: locator.fill: Timeout 10000ms exceeded.
+  32 |     }
+  33 | 
+  34 |     //Fill Password
+  35 | 
+  36 |     async fillpassword (password: string)
+  37 |     {
+  38 |         await this.page.locator(this._passwordfield).fill(password);
+  39 |     }
+  40 | 
+  41 |     // Click Submit
+  42 | 
+  43 |     async clicksubmit()
+  44 |     {
+  45 |         await this.page.locator(this._submitbutton).click();
+  46 |     }
+  47 | 
+  48 |     //Full Login Action
+  49 | 
+  50 |     async login(email : string, password: string)
+  51 |     {
+  52 |         await this.fillmail(email);
+  53 |         await this.fillpassword(password);
+  54 |         await this.clicksubmit();
+  55 | 
+  56 |         // 1 min wait
+  57 |         await this.page.waitForLoadState('networkidle', {timeout: 60000});
+  58 |     }
+  59 | 
+  60 | 
+  61 |     //Assertion
+  62 | 
+  63 |    async verifyPageLoaded()
+  64 |    {
+  65 |        await expect(this.page).toHaveTitle(_pageTitle);
+  66 |        await expect(this.page).toHaveURL(urls._baseUrl + urls._loginPage);
+  67 |    }
+  68 | 
+  69 |    async verifyLoginSucess()
+  70 |    {
+  71 |        await expect(this.page).not.toHaveURL(/login/);
+  72 |    }
+  73 |    async verifyLoginFailed()
+  74 |    {
+  75 |        await expect(this.page).toHaveURL(/login/);
+  76 |    }
+  77 | 
+  78 | }
+```

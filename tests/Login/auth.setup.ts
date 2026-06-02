@@ -1,6 +1,6 @@
 import { test as setup } from '@playwright/test';
 import { LoginPage } from "../../pages/loginpage.spec";
-import { test_credentials } from "../../testData/credentials.data.";
+import { test_credentials } from "../../testData/credentials.data";
 import { PrivacyModal } from "../../pages/privacymodal.spec";
 
 

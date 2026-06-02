@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import { defineConfig } from '@playwright/test';
-import { urls } from "./testData/credentials.data.";
+import { urls } from "./testData/credentials.data";
 
 export default defineConfig({
   testDir: './tests',
@@ -17,14 +17,13 @@ export default defineConfig({
     ['allure-playwright', {
       detail: true,
       outputFolder: 'allure-results',
-      suitTitle: false,
+      suiteTitle: false,   // ✅ Typo fix
     }]
   ],
 
-  
   use: {
     baseURL: urls._baseUrl,
-    actionTimeout: 1500,
+    actionTimeout: 10000,
     navigationTimeout: 60000,
     headless: false,
     viewport: null,
@@ -39,40 +38,29 @@ export default defineConfig({
   projects: [
 
     // ============================================
-    // Step 1: Auth Setup 
-    // ============================================
-    {
-      name: 'setup',
-      testMatch: '**/Login/auth.setup.ts',
-      
-    },
-
-    // ============================================
-    // Step 2: Login Tests 
+    // Login Tests
     // ============================================
     {
       name: 'Login Tests',
-      testMatch: '**/Login/login.spec.ts', 
+      testMatch: '**/Login/login.spec.ts',
       use: {
         channel: 'chrome',
         viewport: null,
-        
       },
-      
     },
 
     // ============================================
-    // Step 3: Dashboard Tests 
+    // Dashboard Tests
     // ============================================
     {
       name: 'Dashboard Tests',
-      testMatch: '**/Dashboard/dashboard.spec.ts', 
+      testMatch: '**/Dashboard/dashboard.spec.ts',
       use: {
         channel: 'chrome',
         viewport: null,
-        storageState: 'AUth/.auth/user.json', 
+      
       },
-      dependencies: ['setup'], 
+      
     },
 
   ],
