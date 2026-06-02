@@ -40,7 +40,4 @@ async verifyPrivacyModalClosed()
     await this.closebutton.click();
     //await expect(this.modal).not.toBeVisible();
 }
-
-
-
 }

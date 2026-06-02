@@ -1,0 +1,295 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login\login.spec.ts >> Login Flow - emobility >> TC_001 - Login Page Should Load Successfully
+- Location: tests\Login\login.spec.ts:25:9
+
+# Error details
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://www.emobility-stage.me-solshare.net/auth/login/auth/login"
+Received: "https://www.emobility-stage.me-solshare.net/home"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 5000ms
+    13 × unexpected value "https://www.emobility-stage.me-solshare.net/home"
+
+```
+
+```yaml
+- link "logo":
+  - /url: /
+  - img "logo"
+- button "Stockholm-icons / Navigation / Angle-double-left":
+  - img "Stockholm-icons / Navigation / Angle-double-left"
+- list:
+  - listitem:
+    - link "ln Overview":
+      - /url: /overview
+      - img "ln"
+      - text: Overview
+  - listitem:
+    - heading "Finance" [level=4]
+  - listitem:
+    - link "ln Contract Management":
+      - /url: /contract-management/list
+      - img "ln"
+      - text: Contract Management
+  - listitem:
+    - link "mw Transactions":
+      - /url: /payments/list
+      - img "mw"
+      - text: Transactions
+  - listitem:
+    - link "inv Invoices":
+      - /url: /invoices/list
+      - img "inv"
+      - text: Invoices
+  - listitem:
+    - link "dt Deposits":
+      - /url: /deposits/list
+      - img "dt"
+      - text: Deposits
+  - listitem:
+    - heading "Operations" [level=4]
+  - listitem:
+    - link "Battery Rent Logs":
+      - /url: /dynamodb/rent-logs
+  - listitem:
+    - link "Drivers":
+      - /url: /drivers/list
+  - listitem:
+    - link "smi Smart batteries":
+      - /url: /devices/list
+      - img "smi"
+      - text: Smart batteries
+  - listitem:
+    - link "smi GPS Devices":
+      - /url: /gps/list
+      - img "smi"
+      - text: GPS Devices
+  - listitem:
+    - link "smi Live Location":
+      - /url: /live-location
+      - img "smi"
+      - text: Live Location
+  - listitem:
+    - link "smi Geofence Notifications":
+      - /url: /geofence-notifications
+      - img "smi"
+      - text: Geofence Notifications
+  - listitem:
+    - link "EVs":
+      - /url: /evs/list
+  - listitem:
+    - link "Borrowers":
+      - /url: /borrowers/list
+      - img
+      - text: Borrowers
+  - listitem:
+    - heading "Battery Management" [level=4]
+  - listitem:
+    - link "Vendors":
+      - /url: /batteries/vendors/list
+  - listitem:
+    - link "Models":
+      - /url: /batteries/models/list
+  - listitem:
+    - link "Batteries":
+      - /url: /batteries/list
+  - listitem:
+    - link "Data Log":
+      - /url: /battery-logs/list
+  - listitem:
+    - heading "Dongle Management" [level=4]
+  - listitem:
+    - link "Smart Dongles":
+      - /url: /dongles/list
+  - listitem:
+    - link "Hardwares":
+      - /url: /ota/hardwares
+  - listitem:
+    - link "Firmwares":
+      - /url: /ota/firmwares
+  - listitem:
+    - link "OTA Updates":
+      - /url: /ota/history
+  - listitem:
+    - heading "Event Management" [level=4]
+  - listitem:
+    - link "Mobile App Events":
+      - /url: /app-events/list
+  - listitem:
+    - heading "Administration" [level=4]
+  - listitem:
+    - link "org Organization - Financiers":
+      - /url: /financiers/list
+      - img "org"
+      - text: Organization - Financiers
+  - listitem:
+    - link "Users":
+      - /url: /users/list
+  - listitem:
+    - link "Roles":
+      - /url: /roles
+- text: Dashboard v3.7.0 Privacy Policy
+- combobox "Search with EV number"
+- text: Hi, Sabbir Ahmed
+- img "Auto-Rickshaw"
+- heading "Welcome to the SOLmobility Dashboard" [level=1]:
+  - text: Welcome to the
+  - mark: SOLmobility
+  - text: Dashboard
+- paragraph
+- text: 2026 ©
+- link "ME-SOLshare":
+  - /url: https://solshare.com
+- link "About":
+  - /url: https://solshare.com/overview/
+- link "Contact":
+  - /url: https://solshare.com/contact-us/
+- heading "User Profile" [level=3]
+- link "":
+  - /url: "#"
+- link "Sabbir Ahmed":
+  - /url: "#"
+- link:
+  - /url: "#"
+- button "Update password"
+- button "Sign out"
+- tablist:
+  - listitem:
+    - tab "Audit Logs" [selected]
+  - listitem:
+    - tab "Notifications"
+  - listitem:
+    - tab "Settings"
+- link "":
+  - /url: "#"
+- tabpanel:
+  - heading "System Messages" [level=5]
+  - link "Top Authors":
+    - /url: "#"
+  - text: Most Successful Fellas +82$
+  - link "Popular Authors":
+    - /url: "#"
+  - text: Most Successful Fellas +280$
+  - link "New Users":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - link "Active Customers":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - link "Bestseller Theme":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - heading "Notifications" [level=5]
+  - link "Another purpose persuade":
+    - /url: "#"
+  - text: Due in 2 Days +28%
+  - img "Stockholm-icons / Communication / Write"
+  - link "Would be to people":
+    - /url: "#"
+  - text: Due in 2 Days +50%
+  - img "Stockholm-icons / Communication / Group-chat"
+  - link "Purpose would be to persuade":
+    - /url: "#"
+  - text: Due in 2 Days -27%
+  - img "Stockholm-icons / General / Attachment2"
+  - link "The best product":
+    - /url: "#"
+  - text: Due in 2 Days +8%
+- img
+```
+
+# Test source
+
+```ts
+  1  | import {Page, expect} from '@playwright/test';
+  2  | import{urls, _pageTitle} from "../testData/credentials.data.";
+  3  | 
+  4  | export class LoginPage {
+  5  | 
+  6  |     private page : Page;
+  7  | 
+  8  |     //Locators
+  9  | 
+  10 |     private _emailfield = 'input[name="username"]';
+  11 |     private _passwordfield = 'input[name="password"]';
+  12 |     private _submitbutton = "button[type='submit']";
+  13 |     
+  14 | 
+  15 |     constructor(page:Page) {
+  16 |         this.page = page;
+  17 |     }
+  18 | 
+  19 |     //Action
+  20 | 
+  21 |     async navigationTo()
+  22 |     {
+  23 |         await this.page.goto(urls._baseUrl + urls._loginPage);
+  24 |         await this.page.waitForLoadState('domcontentloaded');
+  25 |     }
+  26 | 
+  27 |     //Fill Mail
+  28 | 
+  29 |     async fillmail(email: string)
+  30 |     {
+  31 |         await this.page.locator(this._emailfield).fill(email);
+  32 |     }
+  33 | 
+  34 |     //Fill Password
+  35 | 
+  36 |     async fillpassword (password: string)
+  37 |     {
+  38 |         await this.page.locator(this._passwordfield).fill(password);
+  39 |     }
+  40 | 
+  41 |     // Click Submit
+  42 | 
+  43 |     async clicksubmit()
+  44 |     {
+  45 |         await this.page.locator(this._submitbutton).click();
+  46 |     }
+  47 | 
+  48 |     //Full Login Action
+  49 | 
+  50 |     async login(email : string, password: string)
+  51 |     {
+  52 |         await this.fillmail(email);
+  53 |         await this.fillpassword(password);
+  54 |         await this.clicksubmit();
+  55 | 
+  56 |         // 1 min wait
+  57 |         await this.page.waitForLoadState('networkidle', {timeout: 60000});
+  58 |     }
+  59 | 
+  60 | 
+  61 |     //Assertion
+  62 | 
+  63 |    async verifyPageLoaded()
+  64 |    {
+  65 |        await expect(this.page).toHaveTitle(_pageTitle);
+> 66 |        await expect(this.page).toHaveURL(urls._baseUrl + urls._loginPage);
+     |                                ^ Error: expect(page).toHaveURL(expected) failed
+  67 |    }
+  68 | 
+  69 |    async verifyLoginSucess()
+  70 |    {
+  71 |        await expect(this.page).not.toHaveURL(/login/);
+  72 |    }
+  73 |    async verifyLoginFailed()
+  74 |    {
+  75 |        await expect(this.page).toHaveURL(/login/);
+  76 |    }
+  77 | 
+  78 | }
+```

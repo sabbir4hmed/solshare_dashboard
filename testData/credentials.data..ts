@@ -8,7 +8,7 @@ export const test_credentials =
 
 export const urls =
     {
-       _baseUrl : 'https://www.emobility-stage.me-solshare.net/auth/login',
+       _baseUrl : 'https://www.emobility-stage.me-solshare.net',
         _loginPage: '/auth/login',
         _dashboardPage: '/home',
 

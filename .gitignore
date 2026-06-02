@@ -17,3 +17,6 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Auth Session - sensitive data, do not commit
+AUth/.auth/
