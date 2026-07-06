@@ -1,0 +1,287 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Dashboard\dashboard.spec.ts >> Dashboard Flow - emobility >> TC_007 - Dashboard Should Load Successfully
+- Location: tests\Dashboard\dashboard.spec.ts:26:9
+
+# Error details
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://www.emobility-stage.me-solshare.net/overview"
+Received: "https://www.emobility-stage.me-solshare.net/home"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 5000ms
+    13 × unexpected value "https://www.emobility-stage.me-solshare.net/home"
+
+```
+
+```yaml
+- link "logo":
+  - /url: /
+  - img "logo"
+- button "Stockholm-icons / Navigation / Angle-double-left":
+  - img "Stockholm-icons / Navigation / Angle-double-left"
+- list:
+  - listitem:
+    - link "ln Overview":
+      - /url: /overview
+      - img "ln"
+      - text: Overview
+  - listitem:
+    - heading "Finance" [level=4]
+  - listitem:
+    - link "ln Contract Management":
+      - /url: /contract-management/list
+      - img "ln"
+      - text: Contract Management
+  - listitem:
+    - link "mw Transactions":
+      - /url: /payments/list
+      - img "mw"
+      - text: Transactions
+  - listitem:
+    - link "inv Invoices":
+      - /url: /invoices/list
+      - img "inv"
+      - text: Invoices
+  - listitem:
+    - link "dt Deposits":
+      - /url: /deposits/list
+      - img "dt"
+      - text: Deposits
+  - listitem:
+    - heading "Operations" [level=4]
+  - listitem:
+    - link "Battery Rent Logs":
+      - /url: /dynamodb/rent-logs
+  - listitem:
+    - link "Drivers":
+      - /url: /drivers/list
+  - listitem:
+    - link "smi Smart batteries":
+      - /url: /devices/list
+      - img "smi"
+      - text: Smart batteries
+  - listitem:
+    - link "smi GPS Devices":
+      - /url: /gps/list
+      - img "smi"
+      - text: GPS Devices
+  - listitem:
+    - link "smi Live Location":
+      - /url: /live-location
+      - img "smi"
+      - text: Live Location
+  - listitem:
+    - link "smi Geofence Notifications":
+      - /url: /geofence-notifications
+      - img "smi"
+      - text: Geofence Notifications
+  - listitem:
+    - link "EVs":
+      - /url: /evs/list
+  - listitem:
+    - link "Borrowers":
+      - /url: /borrowers/list
+      - img
+      - text: Borrowers
+  - listitem:
+    - heading "Battery Management" [level=4]
+  - listitem:
+    - link "Vendors":
+      - /url: /batteries/vendors/list
+  - listitem:
+    - link "Models":
+      - /url: /batteries/models/list
+  - listitem:
+    - link "Batteries":
+      - /url: /batteries/list
+  - listitem:
+    - link "Data Log":
+      - /url: /battery-logs/list
+  - listitem:
+    - heading "Dongle Management" [level=4]
+  - listitem:
+    - link "Smart Dongles":
+      - /url: /dongles/list
+  - listitem:
+    - link "Hardwares":
+      - /url: /ota/hardwares
+  - listitem:
+    - link "Firmwares":
+      - /url: /ota/firmwares
+  - listitem:
+    - link "OTA Updates":
+      - /url: /ota/history
+  - listitem:
+    - heading "Event Management" [level=4]
+  - listitem:
+    - link "Mobile App Events":
+      - /url: /app-events/list
+  - listitem:
+    - heading "Administration" [level=4]
+  - listitem:
+    - link "org Organization - Financiers":
+      - /url: /financiers/list
+      - img "org"
+      - text: Organization - Financiers
+  - listitem:
+    - link "Users":
+      - /url: /users/list
+  - listitem:
+    - link "Roles":
+      - /url: /roles
+- text: Dashboard v3.7.0 Privacy Policy
+- combobox "Search with EV number"
+- text: Hi, Sabbir Ahmed
+- img "Auto-Rickshaw"
+- heading "Welcome to the SOLmobility Dashboard" [level=1]:
+  - text: Welcome to the
+  - mark: SOLmobility
+  - text: Dashboard
+- paragraph
+- text: 2026 ©
+- link "ME-SOLshare":
+  - /url: https://solshare.com
+- link "About":
+  - /url: https://solshare.com/overview/
+- link "Contact":
+  - /url: https://solshare.com/contact-us/
+- heading "User Profile" [level=3]
+- link "":
+  - /url: "#"
+- link "Sabbir Ahmed":
+  - /url: "#"
+- link:
+  - /url: "#"
+- button "Update password"
+- button "Sign out"
+- tablist:
+  - listitem:
+    - tab "Audit Logs" [selected]
+  - listitem:
+    - tab "Notifications"
+  - listitem:
+    - tab "Settings"
+- link "":
+  - /url: "#"
+- tabpanel:
+  - heading "System Messages" [level=5]
+  - link "Top Authors":
+    - /url: "#"
+  - text: Most Successful Fellas +82$
+  - link "Popular Authors":
+    - /url: "#"
+  - text: Most Successful Fellas +280$
+  - link "New Users":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - link "Active Customers":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - link "Bestseller Theme":
+    - /url: "#"
+  - text: Most Successful Fellas +4500$
+  - heading "Notifications" [level=5]
+  - link "Another purpose persuade":
+    - /url: "#"
+  - text: Due in 2 Days +28%
+  - img "Stockholm-icons / Communication / Write"
+  - link "Would be to people":
+    - /url: "#"
+  - text: Due in 2 Days +50%
+  - img "Stockholm-icons / Communication / Group-chat"
+  - link "Purpose would be to persuade":
+    - /url: "#"
+  - text: Due in 2 Days -27%
+  - img "Stockholm-icons / General / Attachment2"
+  - link "The best product":
+    - /url: "#"
+  - text: Due in 2 Days +8%
+- img
+```
+
+# Test source
+
+```ts
+  1  | 
+  2  | import { Page, expect } from '@playwright/test';
+  3  | import { urls } from "../testData/credentials.data";
+  4  | 
+  5  | 
+  6  | export class DashboardPage {
+  7  | 
+  8  | 
+  9  |     private page: Page;
+  10 | 
+  11 | 
+  12 |     // Locator 
+  13 | 
+  14 |     private _overview = 'span:has-text("Overview")';
+  15 |     private _branchPerformnce = 'Branch-wise Performance';
+  16 |     private _borrowerPerformnce = 'Borrower-wise Performance';
+  17 |     private _activity = 'Activity';
+  18 | 
+  19 | 
+  20 | 
+  21 | 
+  22 | 
+  23 |     constructor(page: Page) {
+  24 |         this.page = page;
+  25 | 
+  26 | 
+  27 |     }
+  28 | 
+  29 | 
+  30 |     // Operations 
+  31 | 
+  32 |     async navigationDashboard()
+  33 |     {
+  34 |         await this.page.goto(urls._baseUrl + urls._dashboardPage);
+  35 |         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+  36 |     }
+  37 | 
+  38 |     async overview() {
+  39 |         await this.page.locator(this._overview).click();
+  40 |         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+  41 |     }
+  42 | 
+  43 |     async branchPerformance() {
+  44 |         await this.page.getByText(this._branchPerformnce).click();
+  45 |         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+  46 |     }
+  47 | 
+  48 |     async borrowerPerformance() {
+  49 |         await this.page.getByText(this._borrowerPerformnce).click();
+  50 |         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+  51 |     }
+  52 | 
+  53 |     async activity() {
+  54 |         await this.page.getByText(this._activity).click();
+  55 |         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+  56 |     }
+  57 | 
+  58 |     //Assertions
+  59 | 
+  60 |     async verifyDashboardLoaded() {
+> 61 |         await expect(this.page).toHaveURL(urls._baseUrl + urls._dashboardPage);
+     |                                 ^ Error: expect(page).toHaveURL(expected) failed
+  62 | 
+  63 |         console.log('Dashboard Loaded Successfully');
+  64 | 
+  65 |     }
+  66 | 
+  67 | 
+  68 | 
+  69 | 
+  70 | }
+```

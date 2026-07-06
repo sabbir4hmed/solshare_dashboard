@@ -1,0 +1,3 @@
+✅ Overview Tab Clicked
+✅ Branch-wise Performance Tab Clicked
+TC_009 Passed - Branch-wise Performance Section is Accessible

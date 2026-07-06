@@ -1,0 +1,3 @@
+✅ Overview Tab Clicked
+✅ Borrower-wise Performance Tab Clicked
+TC_010 Passed - Borrower-wise Performance Section is Accessible

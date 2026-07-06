@@ -1,0 +1,3 @@
+✅ Overview Tab Clicked
+✅ Activity Tab Clicked
+TC_011 Passed - Activity Section is Accessible

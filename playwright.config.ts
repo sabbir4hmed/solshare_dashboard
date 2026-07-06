@@ -44,7 +44,7 @@ export default defineConfig({
       name: 'Login Tests',
       testMatch: '**/Login/login.spec.ts',
       use: {
-        channel: 'chrome',
+        channel: 'chromium',
         viewport: null,
       },
     },
@@ -56,7 +56,7 @@ export default defineConfig({
       name: 'Dashboard Tests',
       testMatch: '**/Dashboard/dashboard.spec.ts',
       use: {
-        channel: 'chrome',
+        channel: 'chromium',
         viewport: null,
       
       },
