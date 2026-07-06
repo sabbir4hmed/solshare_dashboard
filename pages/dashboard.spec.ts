@@ -15,14 +15,14 @@ export class DashboardPage {
         this.page = page;
     }
 
-    // ─── Operations ───────────────────────────────────────────
+    //  Operations 
 
     async navigationDashboard() {
         await this.page.goto(urls._baseUrl + urls._dashboardPage);
         await this.page.waitForLoadState('networkidle', { timeout: 60000 });
     }
 
-    // ✅ Overview click করার পর sub-tabs visible হবে
+    
     async overview() {
         const overviewTab = this.page.locator(this._overview).first();
         await overviewTab.waitFor({ state: 'visible', timeout: 30000 });
@@ -31,7 +31,7 @@ export class DashboardPage {
         console.log('✅ Overview Tab Clicked');
     }
 
-    // ✅ Overview এর পরে call হবে
+
     async branchPerformance() {
         const branchTab = this.page.getByText(this._branchPerformance, { exact: true }).first();
         await branchTab.waitFor({ state: 'visible', timeout: 30000 });
@@ -40,7 +40,7 @@ export class DashboardPage {
         console.log('✅ Branch-wise Performance Tab Clicked');
     }
 
-    // ✅ Overview এর পরে call হবে
+
     async borrowerPerformance() {
         const borrowerTab = this.page.getByText(this._borrowerPerformance, { exact: true }).first();
         await borrowerTab.waitFor({ state: 'visible', timeout: 30000 });
@@ -49,7 +49,7 @@ export class DashboardPage {
         console.log('✅ Borrower-wise Performance Tab Clicked');
     }
 
-    // ✅ Overview এর পরে call হবে
+
     async activity() {
         const activityTab = this.page.getByText(this._activity, { exact: true }).first();
         await activityTab.waitFor({ state: 'visible', timeout: 30000 });
@@ -58,7 +58,7 @@ export class DashboardPage {
         console.log('✅ Activity Tab Clicked');
     }
 
-    // ─── Assertions ───────────────────────────────────────────
+    //  Assertions 
 
     async verifyDashboardLoaded() {
         await expect(this.page).toHaveURL(urls._baseUrl + urls._dashboardPage);
